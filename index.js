@@ -1,1 +1,3 @@
-export const PhoneNumberPicker = require('./lib/phonenumberpicker').default
+import PhoneNumberInput from './lib/phonenumberpicker'
+
+module.exports = PhoneNumberInput

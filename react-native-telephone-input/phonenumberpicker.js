@@ -3,16 +3,9 @@
 
 'use strict';
 
-import React, {Component} from 'react';
-import {
-    Image,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-    TouchableOpacity,
-}  from 'react-native';
-
+import React, { Component } from 'react'
+import { Image, StyleSheet, Text, TextInput, View, TouchableOpacity }  from 'react-native'
+import PropTypes from 'prop-types'
 
 import { parse, format, asYouType } from 'libphonenumber-js'
 /* maps callingCode -> CCA2        */
@@ -20,40 +13,7 @@ import CallingCodeToCCA2 from 'libphonenumber-js/metadata.min'
 
 import CountryPicker from './countrypicker'
 /* maps CCA2 -> CountryLocalDetails */
-import Countries     from './data'
-
-
-var styles = StyleSheet.create({
-    containerCol: {
-        flexDirection: 'column',
-        marginVertical:8,
-        marginHorizontal:8
-    },
-
-    containerRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-
-    viewBottomBorder: {
-        marginHorizontal:30,
-        borderBottomColor: 'black',
-        borderBottomWidth: 1
-    },
-
-    TextInputPhoneNumber: {
-        fontSize:20,
-        height:60,
-        alignItems:'center'
-    },
-
-    TextCountryName: {
-        fontSize:20,
-        color:'#5890FF'
-    }
-});
-
+import Countries from './data'
 
 class PhoneNumberPicker extends React.Component {
     constructor (props) {
@@ -252,7 +212,7 @@ class PhoneNumberPicker extends React.Component {
     render() {
         return (
             <View style={styles.containerCol}>
-                {this.SafeRenderCountryPicker(this.state.country.cca2)}
+                {/* {this.SafeRenderCountryPicker(this.state.country.cca2)} */}
                 <View style={styles.containerRow}>
                      <View style={[styles.containerRow, styles.viewBottomBorder]}>
                      <TextInput style={[styles.TextInputPhoneNumber, {flex:3, borderBottomWidth:2}]}
@@ -284,12 +244,43 @@ class PhoneNumberPicker extends React.Component {
 }
 
 PhoneNumberPicker.PropTypes = {
-    onChange: React.PropTypes.Function,
-    countryHint: React.PropTypes.Object,
+    onChange: PropTypes.func,
+    countryHint: PropTypes.object,
 }
 
 PhoneNumberPicker.defaultProps = {
     countryHint: {name: 'United States', cca2: 'US', callingCode:'1'},
 }
+
+var styles = StyleSheet.create({
+  containerCol: {
+      flexDirection: 'column',
+      marginVertical:8,
+      marginHorizontal:8
+  },
+
+  containerRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
+  },
+
+  viewBottomBorder: {
+      marginHorizontal:30,
+      borderBottomColor: 'black',
+      borderBottomWidth: 1
+  },
+
+  TextInputPhoneNumber: {
+      fontSize:20,
+      height:60,
+      alignItems:'center'
+  },
+
+  TextCountryName: {
+      fontSize:20,
+      color:'#5890FF'
+  }
+})
 
 export default PhoneNumberPicker

@@ -1,9 +1,9 @@
 {
   "name": "react-native-country-code-telephone-input",
   "version": "0.0.9",
-  "main": "phonenumberpicker.js",
+  "main": "index.js",
   "dependencies": {
-    "libphonenumber-js": "^0.2.24",
+    "libphonenumber-js": "^1.0.21",
     "prop-types": "^15.6.0"
   },
   "keywords": [
